@@ -17,9 +17,7 @@ const syncTables = () => {
     Author.sync({ alter: true });
     Genre.sync({ alter: true });
     Author.hasMany(Book);
-    Author.hasMany(Genre);
     Genre.hasMany(Book);
-    Genre.hasMany(Author);
     Book.sync({ alter: true });
     Book.belongsTo(Author);
     Book.belongsTo(Genre);
