@@ -8,18 +8,18 @@ const { addBook, getAllBooks, getBook, updateBook, deleteBook, deleteAllBooks } 
 bookRouter.post("/books/addBook", addBook);
 
 //get all books
-bookRouter.get("books/getAllBooks", getAllBooks)
+bookRouter.get("/books/getAllBooks", getAllBooks)
 
 //get one book by title
-bookRouter.get("books/getBook", getBook)
+bookRouter.get("/books/getBook", getBook)
 
 //dynamically update book by title
-bookRouter.put("books/updateBook", updateBook)
+bookRouter.put("/books/updateBook", updateBook)
 
 //delete single book by title
-bookRouter.delete("books/deleteBook", deleteBook)
+bookRouter.delete("/books/deleteBook", deleteBook)
 
 //delete all books
-bookRouter.delete("books/deleteAllBooks", deleteAllBooks)
+bookRouter.delete("/books/deleteAllBooks", deleteAllBooks)
 
 module.exports = bookRouter;
