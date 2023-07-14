@@ -1,6 +1,5 @@
 const Author = require("./model");
 const Book = require("../books/model");
-const Genre = require("../genres/model");
 
 const addAuthor = async (req, res) => {
     try {
@@ -36,22 +35,8 @@ const getAuthorAndBooks = async (req, res) => {
     }
 }
 
-const getAuthorAndGenres = async (req, res) => {
-    try {
-        const authorAndGenres = await Author.findOne({
-            where: { author: req.body.author },
-            include: Genre
-        });
-        res.status(201).json({message: "Author found with their genres listed.", authorAndGenres: authorAndGenres}); 
-    } catch (error) {
-        res.status(501).json({errorMessage: error.message, error: error});
-        console.log(error); 
-    }
-}
-
 module.exports = {
     addAuthor,
     getAllAuthors,
-    getAuthorAndBooks,
-    getAuthorAndGenres
+    getAuthorAndBooks
 }

@@ -1,6 +1,5 @@
 const Genre = require("./model");
 const Book = require("../books/model");
-const Author = require("../authors/model");
 
 const addGenre = async (req, res) => {
     try {
@@ -28,26 +27,11 @@ const getGenreAndBooks = async (req, res) => {
     try {
         const genreAndBooks = await Genre.findOne({
             where: {
-                genre: req.body.genre,
-                include: Book
-            }
+                genre: req.body.genre
+            },
+            include: Book
         })
         res.status(201).json({message: `${req.body.genre} genre and books found.`, genreAndBooks: genreAndBooks});
-    } catch (error) {
-        res.status(501).json({errorMessage: error.message, error: error});
-        console.log(error);        
-    }
-};
-
-const getGenreAndAuthors = async (req, res) => {
-    try {
-        const genreAndAuthors = await Genre.findOne({
-            where: {
-                genre: req.body.genre,
-                include: Author
-            }
-        })
-        res.status(201).json({message: `${req.body.genre} genre and authors found.`, genreAndAuthors: genreAndAuthors});
     } catch (error) {
         res.status(501).json({errorMessage: error.message, error: error});
         console.log(error);        
@@ -70,6 +54,5 @@ module.exports = {
     addGenre,
     getAllGenres,
     getGenreAndBooks,
-    getGenreAndAuthors,
     deleteGenre
 };

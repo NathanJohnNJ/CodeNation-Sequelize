@@ -8,9 +8,6 @@ const Genre = connection.define("Genre", {
         allowNull: false,
         unique: true
     },
-    AuthorId: {
-        type: DataTypes.INTEGER
-    },
     BookId: {                                
         type: DataTypes.INTEGER
     }
